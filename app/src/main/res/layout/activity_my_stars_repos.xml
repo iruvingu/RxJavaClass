@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,9 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".MyStarsRepos">
 
+    <LinearLayout
+        android:id="@+id/column_header_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Name"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="Description"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="Language"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:text="Count"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/myStarsList"
+        android:layout_below="@+id/column_header_ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -23,9 +23,20 @@ class GithubRepoAdapter : RecyclerView.Adapter<GithubRepoAdapter.StarRepoViewHol
 
     override fun onBindViewHolder(viewHolder: StarRepoViewHolder, position: Int) {
         viewHolder.repoName.text = data[position].name
-        viewHolder.repoDesc.text = data[position].desc
-        viewHolder.repoLang.text = data[position].lang
-        // viewHolder.repoLang.text = data[position]
+
+        viewHolder.repoLang.text = data[position].language
+        viewHolder.repoCount.text = data[position].starCount.toString()
+
+        data[position].description?.let {
+            viewHolder.repoDesc.text = data[position].description
+        }?:run {
+            viewHolder.repoDesc.text = "NO DESC"
+        }
+    }
+
+    fun addRepos(repos: ArrayList<Repo>) {
+        data.addAll(repos)
+        notifyDataSetChanged()
     }
 
     class StarRepoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -33,9 +44,7 @@ class GithubRepoAdapter : RecyclerView.Adapter<GithubRepoAdapter.StarRepoViewHol
         val repoName = itemView.repoName
         val repoDesc = itemView.desc
         val repoLang = itemView.lang
-        // val repoCount = itemView.starsCount
-
-
+        val repoCount = itemView.starsCount
 
     }
 

@@ -9,20 +9,26 @@
 
     <TextView
             android:id="@+id/repoName"
+            android:text="name"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
     <TextView
+            android:text="description"
             android:id="@+id/desc"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
     <TextView
+            android:text="language"
             android:id="@+id/lang"
             android:layout_width="0dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
     <TextView
+            android:text="starsCOunt"
             android:id="@+id/starsCount"
             android:layout_width="0dp"
             android:layout_weight="1"

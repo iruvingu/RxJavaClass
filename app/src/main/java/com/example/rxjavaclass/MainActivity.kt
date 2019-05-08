@@ -1,5 +1,6 @@
 package com.example.rxjavaclass
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import io.reactivex.Observable
@@ -11,6 +12,7 @@ import io.reactivex.subjects.AsyncSubject
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.ReplaySubject
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -21,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        myGithubStarsRepos.setOnClickListener {
+            startActivity(Intent(this, MyStarsRepos::class.java))
+        }
 
         /*showJustJob()
 
