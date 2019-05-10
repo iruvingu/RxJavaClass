@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rxjavaclass.R
-import com.example.rxjavaclass.model.Repo
+import com.example.rxjavaclass.db.Repo
 import kotlinx.android.synthetic.main.row_stars_item.view.*
 
 class GithubRepoAdapter : RecyclerView.Adapter<GithubRepoAdapter.StarRepoViewHolder>() {

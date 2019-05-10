@@ -1,20 +1,21 @@
 package com.example.rxjavaclass
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.example.rxjavaclass.adapter.GithubRepoAdapter
-import com.example.rxjavaclass.model.Repo
-import com.example.rxjavaclass.network.GithubApiClient
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.example.rxjavaclass.db.Repo
+import com.example.rxjavaclass.viewmodel.RepoViewModel
 import kotlinx.android.synthetic.main.activity_my_stars_repos.*
 
 class MyStarsRepos : AppCompatActivity() {
 
     val repoList = ArrayList<Repo>()
     private lateinit var repoAdapter: GithubRepoAdapter
+    private lateinit var repoViewModel: RepoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +30,20 @@ class MyStarsRepos : AppCompatActivity() {
         myStarsList.adapter = repoAdapter
         myStarsList.addItemDecoration(divider)
 
-        getStarredRepo()
+        repoViewModel = ViewModelProviders.of(this).get(RepoViewModel::class.java)
+
+        getStarredRepo(repoViewModel)
+
+        observeMyStars(repoViewModel)
     }
 
-    fun getStarredRepo(){
+    private fun getStarredRepo(viewModel: RepoViewModel) {
+        viewModel.getMyStartsRepos("mrabelwahed")
+    }
 
+    private fun observeMyStars(viewModel: RepoViewModel) {
+        viewModel.getLiveData().observe(this, Observer {
+            repos -> repoAdapter.addRepos(repos!!)
+        })
     }
 }

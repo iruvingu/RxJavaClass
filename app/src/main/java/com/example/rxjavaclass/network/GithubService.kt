@@ -1,6 +1,6 @@
 package com.example.rxjavaclass.network
 
-import com.example.rxjavaclass.model.Repo
+import com.example.rxjavaclass.db.Repo
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
